@@ -10,13 +10,17 @@ public class BasicMaths {
         spf();
         int i = 84;
         System.out.println("Smallest Factor of "+i+" : "+prime[i]);
+
+        // for all factors iterate one value at a time
     }
     //smallest prime factor till 10^6;
     public static void spf(){
         for(int i = 2; i<num+1; i++) prime[i]=i; 
         for(int i=2; i*i<=num ; i++){
             if (prime[i]==i){
-                for(int j=i*i ; j<=num ; j+=i) prime[j]= i;
+                for(int j=i*i ; j<=num ; j+=i) {
+                    if(prime[j] == j) prime[j] = i;
+                }
             }
         }
     }
@@ -56,4 +60,13 @@ public class BasicMaths {
     }
 
     // Prime factors of all numbers in an array 
+     public static Map<Integer, Integer> primeFactorization(int vl) {
+        Map<Integer, Integer> factors = new HashMap<>();
+        while (vl != 1) {
+            int d = prime[vl]; 
+            factors.put(d, factors.getOrDefault(d, 0) + 1);
+            vl = vl / d;  
+        }
+        return factors;
+    }
 }

@@ -16,7 +16,7 @@ public class MaxInShortestPath {
         while (!q.isEmpty()) {
             int node = q.poll();
             for(int ne : list.get(node)){
-                if(dist[ne]==-1){
+                if(dist[ne]==0){
                     dist[ne] = dist[node]+1;
                     fiveCount[ne] = fiveCount[node] + (value[ne]==5 ? 1 : 0);
                     q.offer(ne);
